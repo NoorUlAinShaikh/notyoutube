@@ -1,5 +1,7 @@
 Exploring the youtube developers api to make an imitation of youtube using react for my portfolio.
 
+##### All rights reserved
+
 # !Youtube
 
 Access the site here: [!Youtube](https://notyoutube-007.herokuapp.com//)
@@ -7,6 +9,7 @@ Access the site here: [!Youtube](https://notyoutube-007.herokuapp.com//)
 Your guess to what the application does is correct. Data is served by Youtube data API v3.
 Only embeddable videos along with their relevant information are fetched.
 It is a read-only application at the moment.
+
 
 # Disclaimer
 
@@ -37,7 +40,6 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 - Architecture redesign w.r.t Redux.
 - Support for Authentication and Data updation.
 
-###### All rights reserved
 
 # Tech Stack
 
