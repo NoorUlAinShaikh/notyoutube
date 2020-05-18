@@ -16,7 +16,7 @@ It is a read-only application at the moment.
 ```
 This was supposed to be a pure React application, just a frontend. 
 But to bypass CORS problem for querying the instant search endpoint, I had to put in place a server. 
-Thus utlized the opportunity to mask the API key within the server.
+Thus utilized the opportunity to mask the API key within the server.
 
 I wanted to see how far I could go without a state management library and have kept it that way by 
 implementing a way around the usual routing architecture.
@@ -31,7 +31,7 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 - User is notified about network changes.
 - React router v5 for client side navigation.
 - Instant Seach suggestion.
-- Infinite Scroll for pagination.
+- Home brewed Infinite Scroll for pagination.
 - Independant trigger for comment section pagination.
 - Support for multiple screen sizes. (Resize the window or Open in a mobile device).
 
@@ -45,5 +45,5 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 - FrontEnd: ReactJS
 - BackEnd: ExpressJS
-- CSS: SemanticUI, Materialize CSS, MaterialUI
+- CSS: SemanticUI, Materialize CSS, MaterialUI and some old school handwritten bit
 - Hosted: Heroku
