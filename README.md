@@ -4,7 +4,7 @@ Exploring the youtube developers api to make an imitation of youtube using react
 
 # !Youtube
 
-Access the site here: [!Youtube](https://notyoutube-007.herokuapp.com//)
+Access the site here: [!Youtube](https://notyoutube-007.herokuapp.com)
 
 Your guess to what the application does is correct. Data is served by Youtube data API v3.
 Only embeddable videos along with their relevant information are fetched.
