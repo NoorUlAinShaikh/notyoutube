@@ -5,7 +5,14 @@ import _ from "lodash";
 import axios from "axios";
 
 /** I Authored******************** */
-import { SEARCH, FOCUS, BLUR, SOMETHING_WRONG } from "../helper/constants";
+import {
+  SEARCH,
+  FOCUS,
+  BLUR,
+  NO_RESULTS_FOUND,
+  SOMETHING_WRONG,
+  BAD_REQUEST_SEARCH,
+} from "../helper/constants";
 import history from "../history";
 import "../styles/SearchBar.css";
 
@@ -32,15 +39,20 @@ export default class SearchBar extends React.Component {
           if (this.suggestions.length > 0) {
             this.setState({ instantSearch: [...this.suggestions] });
           }
+        } else {
+          this.setState({ instantSearch: [NO_RESULTS_FOUND] });
         }
       })
       .catch((err) => {
-        this.setState({ instantSearch: [SOMETHING_WRONG] });
         if (err.response) {
           console.log(
             `error from SearchBar:handleOnSearchChange:Code:${err.response.data.statusCode} \n Message:${err.response.data.message}`
           );
+          if (err.response.data.statusCode === 400) {
+            this.setState({ instantSearch: [BAD_REQUEST_SEARCH] });
+          }
         } else {
+          this.setState({ instantSearch: [SOMETHING_WRONG] });
           console.log(`SearchBar:handleOnSearchChange: Error:`, err);
         }
       });

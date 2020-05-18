@@ -22,6 +22,9 @@ export const THUMBS_DOWN = "thumb_down";
 export const SEARCH = "Search";
 export const FOCUS = "focus";
 export const BLUR = "blur";
+export const NO_RESULTS_FOUND = "No results found";
+export const BAD_REQUEST_SEARCH =
+  "Invalid search string. We don't like it, neither does our database!";
 export const SOMETHING_WRONG = "something went wrong...";
 
 /**Video Player */
