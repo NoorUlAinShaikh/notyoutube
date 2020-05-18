@@ -28,7 +28,7 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 # Features
 
-- User is notified about network changes.
+- User is notified about network changes.(Turn off your Wi-Fi/Mobile Data or throttle your internet speed.)
 - React router v5 for client side navigation.
 - Instant Seach suggestion.
 - Home brewed Infinite Scroll for pagination.
