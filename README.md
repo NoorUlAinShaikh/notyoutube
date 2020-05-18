@@ -43,5 +43,5 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 - FrontEnd: ReactJS
 - BackEnd: ExpressJS
-- CSS: SemanticUI, Materialize CSS, MaterialUI and some old school handwritten bit
+- CSS: SemanticUI, Materialize CSS, MaterialUI and a wee bit of old school handwritten CSS
 - Hosted: Heroku
