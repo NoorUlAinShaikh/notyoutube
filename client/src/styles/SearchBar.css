@@ -1,0 +1,38 @@
+#searchBar {
+  font-family: "Kelly Slab", cursive, sans-serif;
+}
+
+.searchIcon {
+  top: 0.8rem;
+  left: 0.7rem;
+  color: gainsboro;
+  cursor: none;
+}
+
+.inputRow {
+  grid-area: 1/1/1 / span 2;
+}
+
+.suggestionsRow {
+  grid-area: 2/1/2 / span 2;
+  margin-left: 3rem;
+}
+
+.instantSearchList {
+  background-color: #0f0f0f;
+  padding: 0.8rem 0;
+  filter: drop-shadow(2px 4px 20px black);
+  cursor: pointer;
+  font-size: large;
+  margin-top: 9px;
+}
+
+.instantSearchList li {
+  color: white;
+  padding: 0.5rem 0 0.5rem 1.4rem;
+}
+
+.instantSearchList li:hover {
+  background-color: #424242;
+  font-weight: bold;
+}

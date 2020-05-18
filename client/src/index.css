@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Kelly+Slab&display=swap");
+
+html {
+  font-family: "Kelly Slab", cursive, sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  font: 14px "Kelly Slab", cursive;
+  -webkit-font-smoothing: antialiased;
+  background-color: #111111;
+}
+
+.gradient {
+  background: linear-gradient(-45deg, #111111, #0d0d0d, #424242, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

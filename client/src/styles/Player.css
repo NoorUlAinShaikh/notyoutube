@@ -1,0 +1,23 @@
+.head {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #0f0f0f;
+  opacity: 0.9;
+  -webkit-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
+  -moz-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
+  -o-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
+  transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
+}
+
+.ui.inverted.placeholder .line:before,
+.ui.inverted.placeholder .line:after {
+  background-color: #111111;
+}
+
+.circularLoader {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}

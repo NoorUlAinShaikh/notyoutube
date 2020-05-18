@@ -1,0 +1,110 @@
+.titleBox {
+  grid-area: 1/1 / span 1/1;
+  display: flex;
+  flex-direction: column;
+}
+.titleBox > div {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.titleBox:nth-child(2) {
+  font-size: 1.6rem;
+  margin: 1rem 0.5rem 0.8rem 0.2rem;
+  color: #ffffff;
+}
+
+.gridWrap {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  color: #bdbdbd;
+}
+.gridWrap .leftGrid {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.gridWrap .rightGrid {
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.gridWrap .date {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+#likes :nth-child(2),
+#dislikes :nth-child(2) {
+  margin: 0.3rem 0 0 0.7rem;
+}
+
+.channelWrap {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 65px auto;
+}
+
+.channelWrap > div {
+  margin: 0.5rem;
+}
+
+.avatarChannels {
+  margin-top: 0.3rem;
+  overflow: hidden;
+  min-width: 50px;
+  text-align: center;
+  grid-area: 1/1 / auto/span 1;
+  max-width: 60px;
+}
+
+.avatarChannels img {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  line-height: 1;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.description {
+  grid-area: 1/2 / auto/2;
+  display: grid;
+  gap: 1rem;
+}
+
+progress[value] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #bdbdbd;
+  border-radius: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+  #videoBlock {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 5px;
+    background-color: #111111;
+    z-index: 999;
+  }
+}
+
+@media only screen and (max-width: 477px) {
+  .gridWrap .bull {
+    display: none;
+  }
+  .gridWrap .date {
+    margin-left: 0 !important;
+    margin-top: 2px;
+  }
+}
