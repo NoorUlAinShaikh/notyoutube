@@ -468,9 +468,11 @@ export default class Player extends React.PureComponent {
         : false;
     if (event.which === 84 && !input) {
       //letter t hit
-      this.setState({ isTheatre: !this.state.isTheatre }, () =>
-        this.calculateNewDocHeight()
-      );
+      if (!window.matchMedia("(max-width: 600px)").matches) {
+        this.setState({ isTheatre: !this.state.isTheatre }, () =>
+          this.calculateNewDocHeight()
+        );
+      }
     }
   };
 
@@ -478,9 +480,17 @@ export default class Player extends React.PureComponent {
     const smallWindow = event
       ? event.currentTarget.matchMedia("(max-width: 959px)").matches
       : false;
-    this.setState({ smallWindow }, () => {
-      this.calculateNewDocHeight(event);
-    });
+    //XOR
+    if (smallWindow ? !this.state.smallWindow : this.state.smallWindow) {
+      this.setState({ smallWindow }, () => this.calculateNewDocHeight());
+    }
+
+    if (this.state.isTheatre) {
+      const toggleTheatreOut = event
+        ? event.currentTarget.matchMedia("(max-width: 600px)").matches
+        : false;
+      if (toggleTheatreOut) this.setState({ isTheatre: !toggleTheatreOut });
+    }
   };
 
   calculateNewDocHeight = () => {
@@ -497,12 +507,9 @@ export default class Player extends React.PureComponent {
   };
 
   handleScroll = () => {
-    if (this.safeTofetch()) {
+    if (window.innerHeight + Math.ceil(window.pageYOffset) >= this.docHeight) {
       if (this.state.videoArray.length > 0) {
-        if (
-          window.innerHeight + Math.ceil(window.pageYOffset) >=
-          this.docHeight
-        ) {
+        if (this.safeTofetch()) {
           this.setState({ isFetching: true }, () => this.loadMoreResults());
         }
       }

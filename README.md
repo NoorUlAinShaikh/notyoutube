@@ -1,4 +1,4 @@
-Exploring the youtube developers api to make an imitation of youtube using react for my portfolio.
+Exploring the youtube developers api to make an imitation of youtube using react for my portfolio(in the works...).
 
 ##### All rights reserved
 
@@ -10,15 +10,14 @@ Your guess to what the application does is correct. Data is served by Youtube da
 Only embeddable videos along with their relevant information are fetched.
 It is a read-only application at the moment.
 
-
 # Disclaimer
 
 ```
-This was supposed to be a pure React application, just a frontend. 
-But to bypass CORS problem for querying the instant search endpoint, I had to put in place a server. 
+This was supposed to be a pure React application, just a frontend.
+But to bypass CORS problem for querying the instant search endpoint, I had to put in place a server.
 Thus utilized the opportunity to mask the API key within the server.
 
-I wanted to see how far I could go without a state management library and have kept it that way by 
+I wanted to see how far I could go without a state management library and have kept it that way by
 implementing a way around the usual routing architecture.
 ```
 
@@ -30,7 +29,7 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 - User is notified about network changes.(Turn off your Wi-Fi/Mobile Data or throttle your internet speed.)
 - React router v5 for client side navigation.
-- Instant Seach suggestion.
+- Instant Seach suggestion with home stewed autocomplete.
 - Home brewed Infinite Scroll for pagination.
 - Independant trigger for comment section pagination.
 - Support for multiple screen sizes. (Resize the window or Open in a mobile device).
@@ -39,7 +38,6 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 - Architecture redesign w.r.t Redux.
 - Support for Authentication and Data updation.
-
 
 # Tech Stack
 

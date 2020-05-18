@@ -15,6 +15,10 @@
   font-size: 1.6rem;
   margin: 1rem 0.5rem 0.8rem 0.2rem;
   color: #ffffff;
+  -webkit-transition: font-size 0.5s ease;
+  -moz-transition: font-size 0.5s ease;
+  -o-transition: font-size 0.5s ease;
+  transition: font-size 0.5s ease;
 }
 
 .gridWrap {
@@ -35,6 +39,10 @@
 .gridWrap .date {
   display: inline-block;
   margin-left: 5px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #likes :nth-child(2),
@@ -97,9 +105,13 @@ progress[value]::-webkit-progress-value {
     background-color: #111111;
     z-index: 999;
   }
+
+  .titleBox:nth-child(2) {
+    font-size: medium;
+  }
 }
 
-@media only screen and (max-width: 477px) {
+@media only screen and (max-width: 504px) {
   .gridWrap .bull {
     display: none;
   }
