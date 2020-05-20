@@ -21,3 +21,10 @@
   justify-content: center;
   margin-top: 4rem;
 }
+
+.topLevelTransition {
+  -webkit-transition: all 0.4s linear 0.18s;
+  -moz-transition: all 0.4s linear 0.18s;
+  -o-transition: all 0.4s linear 0.18s;
+  transition: all 0.4s linear 0.18s;
+}

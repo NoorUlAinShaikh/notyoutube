@@ -163,6 +163,8 @@ const VideoPlayer = ({
           marginTop: "0.5rem",
           gridArea: "2/1/span 1/1",
           whiteSpace: "pre-wrap",
+          minWidth: "-webkit-fill-available",
+          overflowWrap: "anywhere",
           overflow: `${showMore ? "hidden" : ""}`,
         }}
       >
@@ -216,7 +218,7 @@ const VideoPlayer = ({
         <div
           className="description"
           style={{
-            gridTemplateRows: `auto ${showMore ? "100px" : "auto"}`,
+            gridTemplateRows: `auto ${showMore ? "100px" : "minmax(0,1fr)"}`,
           }}
         >
           <div className="titleBox">
@@ -252,17 +254,23 @@ const VideoPlayer = ({
 
   return (
     <div
-      style={
-        smallWindow || isTheatre
-          ? { margin: "0.3rem 1rem 1rem 1rem" }
-          : { margin: "1rem 1rem 1rem 2.5rem" }
-      }
+      className="playerContainer"
+      style={{
+        margin:
+          smallWindow || isTheatre
+            ? "0.3rem 1rem 1rem 1rem"
+            : "1rem 1rem 1rem 2.5rem",
+      }}
     >
       <Grid container spacing={0}>
         <Grid id="videoBlock" item xs={12}>
           <div
-            style={loading.videoBlock ? { display: "none" } : {}}
-            className={`ui ${isTheatre ? "21:9" : ""} embed`}
+            style={
+              loading.videoBlock
+                ? { display: "none" }
+                : { background: "#111111" }
+            }
+            className={`ui${isTheatre ? " 21:9 " : " "}embed`}
           >
             <iframe
               ref={iframeRef}

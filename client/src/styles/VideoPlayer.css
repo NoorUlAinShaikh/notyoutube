@@ -1,3 +1,10 @@
+.playerContainer {
+  -webkit-transition: margin 0.25s linear 0s;
+  -moz-transition: margin 0.25s linear 0s;
+  -o-transition: margin 0.25s linear 0s;
+  transition: margin 0.25s linear 0s;
+}
+
 .titleBox {
   grid-area: 1/1 / span 1/1;
   display: flex;
@@ -53,7 +60,7 @@
 .channelWrap {
   display: grid;
   gap: 0;
-  grid-template-columns: 65px auto;
+  grid-template-columns: 65px minmax(0, 1fr);
 }
 
 .channelWrap > div {

@@ -25,11 +25,15 @@ implementing a way around the usual routing architecture.
 Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API key.
 ```
 
+```
+**Only optimized for Chrome.**
+```
+
 # Features
 
 - User is notified about network changes.(Turn off your Wi-Fi/Mobile Data or throttle your internet speed.)
 - React router v5 for client side navigation.
-- Instant Seach suggestion with home stewed autocomplete.
+- Instant Seach suggestion.
 - Home brewed Infinite Scroll for pagination.
 - Independant trigger for comment section pagination.
 - Support for multiple screen sizes. (Resize the window or Open in a mobile device).
@@ -38,6 +42,12 @@ Note: If you face a 'Daily Limit Exceeded error'. Hit me up. I'll update the API
 
 - Architecture redesign w.r.t Redux.
 - Support for Authentication and Data updation.
+- Cross Browser compatibility
+
+# Road to 404
+
+- Having only the 'search' page developed, as of now '/' is redirected to the search page at '/search'.
+- Anything other than '/search' or '/' will result in a 404!
 
 # Tech Stack
 

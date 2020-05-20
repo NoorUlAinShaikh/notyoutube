@@ -17,7 +17,7 @@ const Header = ({ showProgressBar, isTheatre, online }) => {
 
   const handleLogoClick = (event) => {
     event.preventDefault();
-    const urlParams = new URLSearchParams(window.location.search);
+    let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get("q") && DEFAULT_SEARCH !== urlParams.get("q")) {
       history.push(`/search?q=${DEFAULT_SEARCH}`);
     }

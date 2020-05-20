@@ -3,11 +3,11 @@ import React from "react";
 /**3rd Party Libraries*************/
 import _ from "lodash";
 import axios from "axios";
+import M from "materialize-css";
 
 /** I Authored******************** */
 import {
   SEARCH,
-  FOCUS,
   BLUR,
   NO_RESULTS_FOUND,
   SOMETHING_WRONG,
@@ -21,11 +21,39 @@ export default class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchVal: "",
-      instantSearch: [],
-      showSuggestions: false,
+      instantSearch: {},
+      showError: false,
     };
-    this.suggestions = [];
     this.searchInput = React.createRef(null);
+    this.errLiterals = [NO_RESULTS_FOUND, BAD_REQUEST_SEARCH, SOMETHING_WRONG];
+  }
+
+  componentDidMount() {
+    if (!this.autocomplete && this.searchInput) {
+      this.autocomplete = M.Autocomplete.init(this.searchInput.current, {
+        minLength: 0,
+        limit: 14,
+        onAutocomplete: this.handleSuggestionClick,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.instantSearch !== this.state.instantSearch) {
+      if (
+        Object.keys(this.state.instantSearch).length === 1 &&
+        this.errLiterals.some((i) => i in this.state.instantSearch)
+      ) {
+        this.setState({ showError: true });
+      } else {
+        if (this.state.showError) this.setState({ showError: false });
+        this.autocomplete.updateData(this.state.instantSearch);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.autocomplete.destroy();
   }
 
   /**API Call********************************************************************/
@@ -35,12 +63,21 @@ export default class SearchBar extends React.Component {
       .post("/api/getSearchSuggestions", { currentSearchVal })
       .then(({ data }) => {
         if (data.length > 0 && data[1].length > 0) {
-          this.suggestions = data[1].map((result) => result[0]);
-          if (this.suggestions.length > 0) {
-            this.setState({ instantSearch: [...this.suggestions] });
+          let suggestions = Object.assign(
+            {},
+            ...data[1].map((result) => {
+              return {
+                [result[0]]: null,
+              };
+            })
+          );
+
+          if (suggestions) {
+            this.setState({ instantSearch: { ...suggestions } });
           }
+          suggestions = null;
         } else {
-          this.setState({ instantSearch: [NO_RESULTS_FOUND] });
+          this.setState({ instantSearch: { [NO_RESULTS_FOUND]: null } });
         }
       })
       .catch((err) => {
@@ -49,10 +86,12 @@ export default class SearchBar extends React.Component {
             `error from SearchBar:handleOnSearchChange:Code:${err.response.data.statusCode} \n Message:${err.response.data.message}`
           );
           if (err.response.data.statusCode === 400) {
-            this.setState({ instantSearch: [BAD_REQUEST_SEARCH] });
+            this.setState({ instantSearch: { [BAD_REQUEST_SEARCH]: null } });
+          } else {
+            this.setState({ instantSearch: { [SOMETHING_WRONG]: null } });
           }
         } else {
-          this.setState({ instantSearch: [SOMETHING_WRONG] });
+          this.setState({ instantSearch: { [SOMETHING_WRONG]: null } });
           console.log(`SearchBar:handleOnSearchChange: Error:`, err);
         }
       });
@@ -82,7 +121,7 @@ export default class SearchBar extends React.Component {
   handleOnChange = (event) => {
     const searchVal = event.target.value;
     if (searchVal.length < 1) {
-      this.setState({ instantSearch: [] });
+      this.setState({ instantSearch: {}, showError: false });
     }
     this.setState({ searchVal }, () =>
       this.handleOnSearchChange(this.state.searchVal)
@@ -95,18 +134,19 @@ export default class SearchBar extends React.Component {
     }
   }, 200);
 
-  handleSuggestionClick = (event) => {
-    if (event.target.innerText !== "") {
-      const searchVal = event.target.innerText.trim();
-      this.setState({ searchVal }, () => this.fireSearch(this.state.searchVal));
+  handleSuggestionClick = (suggestion) => {
+    if (this.state.searchVal !== suggestion) {
+      this.setState({ searchVal: suggestion }, () =>
+        this.fireSearch(this.state.searchVal.trim())
+      );
+    } else {
+      this.fireSearch(this.state.searchVal.trim());
     }
   };
 
   handleInputFocus = ({ type }) => {
-    if (FOCUS.includes(type)) {
-      this.setState({ showSuggestions: true });
-    } else if (BLUR.includes(type)) {
-      this.setState({ showSuggestions: false });
+    if (BLUR.includes(type)) {
+      if (this.state.showError) this.setState({ showError: false });
     }
   };
 
@@ -132,29 +172,23 @@ export default class SearchBar extends React.Component {
               </label>
               <input
                 ref={this.searchInput}
+                className="autocomplete"
                 style={{ color: "white", marginBottom: "0px" }}
                 id="searchBar"
                 type="text"
                 value={this.state.searchVal}
                 onChange={this.handleOnChange}
-                onFocus={this.handleInputFocus}
                 onBlur={this.handleInputFocus}
               />
             </div>
           </form>
         </div>
         <div className="suggestionsRow">
-          {this.state.instantSearch.length > 0 ? (
-            <ul
-              className={`instantSearchList${
-                this.state.showSuggestions ? "" : " hide"
-              }`}
-            >
-              {this.state.instantSearch.map((suggestion, index) => (
-                <li key={index} onMouseDown={this.handleSuggestionClick}>
-                  {suggestion}
-                </li>
-              ))}
+          {this.state.showError ? (
+            <ul className="instantSearchList" style={{ color: "#fff" }}>
+              <li style={{ padding: "0 1rem" }}>
+                {Object.keys(this.state.instantSearch)[0]}
+              </li>
             </ul>
           ) : null}
         </div>
