@@ -108,9 +108,9 @@ progress[value]::-webkit-progress-value {
   #videoBlock {
     position: sticky;
     position: -webkit-sticky;
-    top: 5px;
+    top: 63px;
     background-color: #111111;
-    z-index: 999;
+    z-index: 990;
   }
 
   .titleBox:nth-child(2) {
