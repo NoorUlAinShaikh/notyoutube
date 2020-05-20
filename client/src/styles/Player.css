@@ -24,8 +24,8 @@
 }
 
 .topLevelTransition {
-  -webkit-transition: all 0.4s linear 0.18s;
-  -moz-transition: all 0.4s linear 0.18s;
-  -o-transition: all 0.4s linear 0.18s;
-  transition: all 0.4s linear 0.18s;
+  -webkit-transition: all 0.12s linear 0s;
+  -moz-transition: all 0.12s linear 0s;
+  -o-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s;
 }
