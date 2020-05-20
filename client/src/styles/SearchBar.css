@@ -22,17 +22,20 @@
   background-color: #0f0f0f;
   padding: 0.8rem 0;
   filter: drop-shadow(2px 4px 20px black);
-  cursor: pointer;
   font-size: large;
   margin-top: 9px;
 }
 
-.instantSearchList li {
-  color: white;
-  padding: 0.5rem 0 0.5rem 1.4rem;
+.autocomplete-content {
+  width: calc(100% - 3rem) !important;
+  background-color: #0f0f0f !important;
+  filter: drop-shadow(2px 4px 20px black) !important;
 }
 
-.instantSearchList li:hover {
-  background-color: #424242;
-  font-weight: bold;
+.dropdown-content li:hover,
+.dropdown-content li.active {
+  background-color: #424242 !important;
+}
+.autocomplete-content li .highlight {
+  color: #fff !important;
 }
