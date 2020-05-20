@@ -5,6 +5,7 @@
   z-index: 999;
   background-color: #0f0f0f;
   opacity: 0.9;
+  backdrop-filter: blur(6px);
   -webkit-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
   -moz-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
   -o-transition: background-color cubic-bezier(0.17, 0.67, 0.83, 0.67) 2s;
