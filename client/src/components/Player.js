@@ -577,7 +577,7 @@ export default class Player extends React.PureComponent {
           sm={12}
           md={this.state.isTheatre ? 12 : 5}
           lg={this.state.isTheatre ? 12 : 4}
-          className="topLevelTransition"
+          // className="topLevelTransition"
         >
           <VideoList
             videos={this.state.videoArray}
@@ -597,7 +597,7 @@ export default class Player extends React.PureComponent {
         sm={12}
         md={this.state.isTheatre ? 12 : 7}
         lg={this.state.isTheatre ? 12 : 8}
-        className="topLevelTransition"
+        // className="topLevelTransition"
       >
         {state ? (
           <VideoPlayer
